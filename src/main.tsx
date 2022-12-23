@@ -14,12 +14,19 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <Route
             index
             element={
-              <React.Suspense>
+              <React.Suspense fallback={null}>
                 <IndexPage />
               </React.Suspense>
             }
           />
-          <Route path='simple-drag' element={<SimpleDrag />} />
+          <Route
+            path='simple-drag'
+            element={
+              <React.Suspense fallback={null}>
+                <SimpleDrag />
+              </React.Suspense>
+            }
+          />
         </Route>
       </Routes>
     </BrowserRouter>
