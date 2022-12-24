@@ -21,7 +21,9 @@ export function Nav() {
       <nav>
         <ul className='flex flex-row gap-6'>
           <li>
+            <NavLink to='/'>Home</NavLink>
             <NavLink to='simple-drag'>Simple Drag</NavLink>
+            <NavLink to='resizable-panels'>Resizable Panels</NavLink>
           </li>
         </ul>
       </nav>

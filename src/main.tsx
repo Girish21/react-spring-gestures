@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Layout } from './components'
 import './index.css'
 import IndexPage from './pages/index'
+import ResizablePanels from './pages/resizable-panels'
 import SimpleDrag from './pages/simple-gesture'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -24,6 +25,14 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             element={
               <React.Suspense fallback={null}>
                 <SimpleDrag />
+              </React.Suspense>
+            }
+          />
+          <Route
+            path='resizable-panels'
+            element={
+              <React.Suspense fallback={null}>
+                <ResizablePanels />
               </React.Suspense>
             }
           />
