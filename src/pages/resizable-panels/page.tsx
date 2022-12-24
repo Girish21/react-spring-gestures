@@ -1,9 +1,7 @@
 import * as React from 'react'
 import { useSpring, animated } from '@react-spring/web'
 import { useDrag } from '@use-gesture/react'
-
-const clamp = (num: number, clamp: number, higher?: number) =>
-  higher ? Math.min(Math.max(num, clamp), higher) : Math.min(num, clamp)
+import { clamp } from '../../utils'
 
 const Panel = ({
   children,
