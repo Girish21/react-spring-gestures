@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Layout } from './components'
 import './index.css'
+import DraggableCarousel from './pages/draggable-carousel'
 import IndexPage from './pages/index'
 import ResizablePanels from './pages/resizable-panels'
 import SimpleDrag from './pages/simple-gesture'
@@ -33,6 +34,14 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             element={
               <React.Suspense fallback={null}>
                 <ResizablePanels />
+              </React.Suspense>
+            }
+          />
+          <Route
+            path='draggable-carousel'
+            element={
+              <React.Suspense fallback={null}>
+                <DraggableCarousel />
               </React.Suspense>
             }
           />

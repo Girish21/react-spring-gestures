@@ -24,6 +24,7 @@ export function Nav() {
             <NavLink to='/'>Home</NavLink>
             <NavLink to='simple-drag'>Simple Drag</NavLink>
             <NavLink to='resizable-panels'>Resizable Panels</NavLink>
+            <NavLink to='draggable-carousel'>Draggable Carousel</NavLink>
           </li>
         </ul>
       </nav>
