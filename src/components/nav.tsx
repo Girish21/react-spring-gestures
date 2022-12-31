@@ -22,6 +22,7 @@ const NavLinks = [
   { path: 'simple-drag', label: 'Simple Drag' },
   { path: 'draggable-carousel', label: 'Draggable Carousel' },
   { path: 'resizable-panels', label: 'Resizable Panels' },
+  { path: 'native-slider', label: 'Native Slider' },
 ] as const
 
 function NavLink(props: Omit<NavLinkProps, 'className'>) {

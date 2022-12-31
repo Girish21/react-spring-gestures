@@ -5,6 +5,7 @@ import { Layout } from './components'
 import './index.css'
 import DraggableCarousel from './pages/draggable-carousel'
 import IndexPage from './pages/index'
+import NativeSlider from './pages/native-slider'
 import ResizablePanels from './pages/resizable-panels'
 import SimpleDrag from './pages/simple-gesture'
 
@@ -42,6 +43,14 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             element={
               <React.Suspense fallback={null}>
                 <DraggableCarousel />
+              </React.Suspense>
+            }
+          />
+          <Route
+            path='native-slider'
+            element={
+              <React.Suspense fallback={null}>
+                <NativeSlider />
               </React.Suspense>
             }
           />
