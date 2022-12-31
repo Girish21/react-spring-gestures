@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Layout } from './components'
 import './index.css'
+import ColorPicker from './pages/color-picker'
 import DraggableCarousel from './pages/draggable-carousel'
 import IndexPage from './pages/index'
 import NativeSlider from './pages/native-slider'
@@ -51,6 +52,14 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             element={
               <React.Suspense fallback={null}>
                 <NativeSlider />
+              </React.Suspense>
+            }
+          />
+          <Route
+            path='color-picker'
+            element={
+              <React.Suspense fallback={null}>
+                <ColorPicker />
               </React.Suspense>
             }
           />
