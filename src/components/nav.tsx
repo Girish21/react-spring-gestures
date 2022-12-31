@@ -13,6 +13,7 @@ import {
 } from 'react-router-dom'
 import svg from '../assets/sprites.svg'
 import { clsx, generateSvg } from '../utils'
+import { NavContainer } from './nav-container'
 
 const HamburgerSvg = generateSvg(svg, 'hamburger')
 const CloseSvg = generateSvg(svg, 'close')
@@ -130,13 +131,13 @@ function DesktopNav() {
   )
 }
 
-export function Nav() {
+function Nav() {
   return (
-    <header className='p-2 lg:mx-auto lg:w-app-content lg:px-0'>
-      <nav className='flex items-end md:items-center'>
-        <DesktopNav />
-        <MobileNav />
-      </nav>
-    </header>
+    <NavContainer>
+      <DesktopNav />
+      <MobileNav />
+    </NavContainer>
   )
 }
+
+export default Nav
