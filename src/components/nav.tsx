@@ -1,5 +1,28 @@
-import { NavLink as RRNavLink, NavLinkProps } from 'react-router-dom'
-import { clsx } from '../utils'
+import * as Portal from '@radix-ui/react-portal'
+import {
+  animated,
+  useChain,
+  useSpringRef,
+  useTransition,
+} from '@react-spring/web'
+import * as React from 'react'
+import {
+  NavLink as RRNavLink,
+  NavLinkProps,
+  useLocation,
+} from 'react-router-dom'
+import svg from '../assets/sprites.svg'
+import { clsx, generateSvg } from '../utils'
+
+const HamburgerSvg = generateSvg(svg, 'hamburger')
+const CloseSvg = generateSvg(svg, 'close')
+
+const NavLinks = [
+  { path: '/', label: 'Home' },
+  { path: 'simple-drag', label: 'Simple Drag' },
+  { path: 'draggable-carousel', label: 'Draggable Carousel' },
+  { path: 'draggable-list', label: 'Draggable List' },
+] as const
 
 function NavLink(props: Omit<NavLinkProps, 'className'>) {
   return (
@@ -15,18 +38,103 @@ function NavLink(props: Omit<NavLinkProps, 'className'>) {
   )
 }
 
+function MobileNav() {
+  const [showNav, setShowNav] = React.useState<'open' | 'close'>('close')
+
+  const location = useLocation()
+
+  const transitionRef = useSpringRef()
+  const trailRef = useSpringRef()
+
+  const popperTransition = useTransition(showNav === 'open' ? true : null, {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0, config: { friction: 40, mass: 1, tension: 150 } },
+    ref: transitionRef,
+  })
+  const itemsTransition = useTransition(showNav === 'open' ? NavLinks : [], {
+    trail: 300 / NavLinks.length,
+    from: { opacity: 0, x: '-5%' },
+    enter: { opacity: 1, x: '0%' },
+    leave: { opacity: 0, x: '15%' },
+    ref: trailRef,
+  })
+
+  useChain(
+    showNav === 'open' ? [transitionRef, trailRef] : [trailRef, transitionRef],
+    showNav === 'open' ? [0, 0.5] : [0, 0.3],
+  )
+
+  React.useEffect(() => {
+    setShowNav('close')
+  }, [location])
+
+  return (
+    <>
+      <button
+        onClick={() => setShowNav('open')}
+        className='ml-auto h-8 w-8 p-1 md:hidden'
+        aria-label='Open navigation'
+      >
+        <HamburgerSvg aria-hidden className='h-full w-full text-black' />
+      </button>
+      <Portal.Root>
+        {popperTransition((style, visible) =>
+          visible ? (
+            <animated.div style={style} className='fixed inset-0 z-10'>
+              <div className='h-full w-full bg-white px-8 pt-24 pb-8'>
+                <ul className='flex flex-col gap-y-8'>
+                  {itemsTransition((style, item) =>
+                    item ? (
+                      <animated.li style={style} key={item.path}>
+                        <NavLink to={item.path}>{item.label}</NavLink>
+                      </animated.li>
+                    ) : null,
+                  )}
+                </ul>
+                <div className='absolute top-2 right-2'>
+                  <button
+                    onClick={() =>
+                      setShowNav(state =>
+                        state === 'close' ? 'open' : 'close',
+                      )
+                    }
+                    className='h-8 w-8 p-2'
+                    aria-label='Close navigation'
+                  >
+                    <CloseSvg
+                      aria-hidden
+                      className='h-full w-full text-black'
+                    />
+                  </button>
+                </div>
+              </div>
+            </animated.div>
+          ) : null,
+        )}
+      </Portal.Root>
+    </>
+  )
+}
+
+function DesktopNav() {
+  return (
+    <ul className='hidden items-center gap-6 md:flex'>
+      {NavLinks.map(({ path, label }) => (
+        <li key={path}>
+          <NavLink to={path}>{label}</NavLink>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
 export function Nav() {
   return (
-    <header className='mx-auto w-app-content py-2'>
-      <nav>
-        <ul className='flex flex-row gap-6'>
-          <li>
-            <NavLink to='/'>Home</NavLink>
-            <NavLink to='simple-drag'>Simple Drag</NavLink>
-            <NavLink to='resizable-panels'>Resizable Panels</NavLink>
-            <NavLink to='draggable-carousel'>Draggable Carousel</NavLink>
-          </li>
-        </ul>
+    <header className='p-2 md:mx-auto md:w-app-content md:px-0'>
+      <nav className='flex items-end md:items-center'>
+        <DesktopNav />
+        <MobileNav />
       </nav>
     </header>
   )

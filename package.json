@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@radix-ui/react-portal": "^1.0.1",
     "@reach/rect": "^0.17.0",
     "@react-spring/web": "^9.6.1",
     "@use-gesture/react": "^10.2.23",
