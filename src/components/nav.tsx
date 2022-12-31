@@ -21,7 +21,7 @@ const NavLinks = [
   { path: '/', label: 'Home' },
   { path: 'simple-drag', label: 'Simple Drag' },
   { path: 'draggable-carousel', label: 'Draggable Carousel' },
-  { path: 'draggable-list', label: 'Draggable List' },
+  { path: 'resizable-panels', label: 'Resizable Panels' },
 ] as const
 
 function NavLink(props: Omit<NavLinkProps, 'className'>) {
@@ -73,7 +73,7 @@ function MobileNav() {
     <>
       <button
         onClick={() => setShowNav('open')}
-        className='ml-auto h-8 w-8 p-1 md:hidden'
+        className='ml-auto h-8 w-8 p-1 lg:hidden'
         aria-label='Open navigation'
       >
         <HamburgerSvg aria-hidden className='h-full w-full text-black' />
@@ -119,9 +119,9 @@ function MobileNav() {
 
 function DesktopNav() {
   return (
-    <ul className='hidden items-center gap-6 md:flex'>
+    <ul className='hidden items-center gap-6 lg:flex lg:flex-nowrap'>
       {NavLinks.map(({ path, label }) => (
-        <li key={path}>
+        <li key={path} className='flex-shrink-0'>
           <NavLink to={path}>{label}</NavLink>
         </li>
       ))}
@@ -131,7 +131,7 @@ function DesktopNav() {
 
 export function Nav() {
   return (
-    <header className='p-2 md:mx-auto md:w-app-content md:px-0'>
+    <header className='p-2 lg:mx-auto lg:w-app-content lg:px-0'>
       <nav className='flex items-end md:items-center'>
         <DesktopNav />
         <MobileNav />
