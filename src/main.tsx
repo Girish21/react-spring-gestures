@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Layout } from './components'
 import './index.css'
+import CardGesture from './pages/card-gesture'
 import DraggableCarousel from './pages/draggable-carousel'
 import IndexPage from './pages/index'
 import NativeSlider from './pages/native-slider'
@@ -56,10 +57,18 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             }
           />
           <Route
-            path='scroll-cards'
+            path='scroll-effect'
             element={
               <React.Suspense fallback={null}>
                 <ScrollEffect />
+              </React.Suspense>
+            }
+          />
+          <Route
+            path='card-gesture'
+            element={
+              <React.Suspense fallback={null}>
+                <CardGesture />
               </React.Suspense>
             }
           />
