@@ -11,6 +11,7 @@ import {
   NavLinkProps,
   useLocation,
 } from 'react-router-dom'
+import { RemoveScroll } from 'react-remove-scroll'
 import svg from '../assets/sprites.svg'
 import { clsx, generateSvg } from '../utils'
 import { NavContainer } from './nav-container'
@@ -25,6 +26,8 @@ const NavLinks = [
   { path: 'resizable-panels', label: 'Resizable Panels' },
   { path: 'native-slider', label: 'Native Slider' },
   { path: 'color-picker', label: 'Color Picker' },
+  { path: 'scroll-effect', label: 'Scroll Effect' },
+  { path: 'card-gesture', label: 'Card Gesture' },
 ] as const
 
 function NavLink(props: Omit<NavLinkProps, 'className'>) {
@@ -76,7 +79,7 @@ function MobileNav() {
     <>
       <button
         onClick={() => setShowNav('open')}
-        className='ml-auto h-8 w-8 p-1 lg:hidden'
+        className='ml-auto h-8 w-8 p-1'
         aria-label='Open navigation'
       >
         <HamburgerSvg aria-hidden className='h-full w-full text-black' />
@@ -84,35 +87,37 @@ function MobileNav() {
       <Portal.Root>
         {popperTransition((style, visible) =>
           visible ? (
-            <animated.div style={style} className='fixed inset-0 z-10'>
-              <div className='h-full w-full bg-white px-8 pt-24 pb-8'>
-                <ul className='flex flex-col gap-y-8'>
-                  {itemsTransition((style, item) =>
-                    item ? (
-                      <animated.li style={style} key={item.path}>
-                        <NavLink to={item.path}>{item.label}</NavLink>
-                      </animated.li>
-                    ) : null,
-                  )}
-                </ul>
-                <div className='absolute top-2 right-2'>
-                  <button
-                    onClick={() =>
-                      setShowNav(state =>
-                        state === 'close' ? 'open' : 'close',
-                      )
-                    }
-                    className='h-8 w-8 p-2'
-                    aria-label='Close navigation'
-                  >
-                    <CloseSvg
-                      aria-hidden
-                      className='h-full w-full text-black'
-                    />
-                  </button>
+            <RemoveScroll>
+              <animated.div style={style} className='fixed inset-0 z-10'>
+                <div className='h-full w-full bg-white px-8 pt-24 pb-8'>
+                  <ul className='flex flex-col gap-y-8 md:items-center'>
+                    {itemsTransition((style, item) =>
+                      item ? (
+                        <animated.li style={style} key={item.path}>
+                          <NavLink to={item.path}>{item.label}</NavLink>
+                        </animated.li>
+                      ) : null,
+                    )}
+                  </ul>
+                  <div className='absolute top-2 right-2'>
+                    <button
+                      onClick={() =>
+                        setShowNav(state =>
+                          state === 'close' ? 'open' : 'close',
+                        )
+                      }
+                      className='h-8 w-8 p-2'
+                      aria-label='Close navigation'
+                    >
+                      <CloseSvg
+                        aria-hidden
+                        className='h-full w-full text-black'
+                      />
+                    </button>
+                  </div>
                 </div>
-              </div>
-            </animated.div>
+              </animated.div>
+            </RemoveScroll>
           ) : null,
         )}
       </Portal.Root>
@@ -120,22 +125,9 @@ function MobileNav() {
   )
 }
 
-function DesktopNav() {
-  return (
-    <ul className='hidden items-center gap-6 lg:flex lg:flex-nowrap'>
-      {NavLinks.map(({ path, label }) => (
-        <li key={path} className='flex-shrink-0'>
-          <NavLink to={path}>{label}</NavLink>
-        </li>
-      ))}
-    </ul>
-  )
-}
-
 function Nav() {
   return (
     <NavContainer>
-      <DesktopNav />
       <MobileNav />
     </NavContainer>
   )

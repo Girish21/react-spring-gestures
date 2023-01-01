@@ -4,10 +4,12 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Layout } from './components'
 import './index.css'
 import ColorPicker from './pages/color-picker'
+import CardGesture from './pages/card-gesture'
 import DraggableCarousel from './pages/draggable-carousel'
 import IndexPage from './pages/index'
 import NativeSlider from './pages/native-slider'
 import ResizablePanels from './pages/resizable-panels'
+import ScrollEffect from './pages/scroll-effect'
 import SimpleDrag from './pages/simple-gesture'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -52,6 +54,22 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             element={
               <React.Suspense fallback={null}>
                 <NativeSlider />
+              </React.Suspense>
+            }
+          />
+          <Route
+            path='scroll-effect'
+            element={
+              <React.Suspense fallback={null}>
+                <ScrollEffect />
+              </React.Suspense>
+            }
+          />
+          <Route
+            path='card-gesture'
+            element={
+              <React.Suspense fallback={null}>
+                <CardGesture />
               </React.Suspense>
             }
           />
