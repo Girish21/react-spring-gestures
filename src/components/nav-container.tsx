@@ -34,10 +34,7 @@ export function NavContainer({ children }: { children?: React.ReactNode }) {
 
   return (
     <>
-      <header
-        ref={headerRef}
-        className='fixed top-0 left-0 right-0 p-2 lg:mx-auto lg:w-app-content lg:px-0'
-      >
+      <header ref={headerRef} className='fixed top-0 left-0 right-0 p-2'>
         <nav className='flex items-end md:items-center'>{children}</nav>
       </header>
       <div className='block' ref={compensatorRef} />
