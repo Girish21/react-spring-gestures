@@ -24,6 +24,7 @@ const NavLinks = [
   { path: 'draggable-carousel', label: 'Draggable Carousel' },
   { path: 'resizable-panels', label: 'Resizable Panels' },
   { path: 'native-slider', label: 'Native Slider' },
+  { path: 'scroll-effect', label: 'Scroll Effect' },
 ] as const
 
 function NavLink(props: Omit<NavLinkProps, 'className'>) {

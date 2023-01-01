@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       width: {
-        'app-content': 'min(100%, 100vw - 30rem)',
+        'app-content': 'min(100% - 3rem, 1200px)',
       },
     },
   },
