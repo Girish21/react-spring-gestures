@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Layout } from './components'
 import './index.css'
 import CardGesture from './pages/card-gesture'
+import PageIndicator from './pages/PageIndicator'
 import DraggableCarousel from './pages/draggable-carousel'
 import IndexPage from './pages/index'
 import NativeSlider from './pages/native-slider'
@@ -69,6 +70,14 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             element={
               <React.Suspense fallback={null}>
                 <CardGesture />
+              </React.Suspense>
+            }
+          />
+          <Route
+            path='indicators'
+            element={
+              <React.Suspense fallback={null}>
+                <PageIndicator />
               </React.Suspense>
             }
           />
