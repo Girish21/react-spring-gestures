@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useSpring, a } from '@react-spring/web'
+import { useSpring, a, useTransition } from '@react-spring/web'
 
 import { usePrevious } from '../../hooks'
 
@@ -9,6 +9,12 @@ const getItemId = (index: number) => `item-${index}`
 
 function PageIndicator() {
   const [indicatorType, setIndicatorType] = React.useState<Indicators>('square')
+  const transition = useTransition(indicatorType, {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
+    exitBeforeEnter: true,
+  })
 
   return (
     <div className='flex h-full flex-col'>
@@ -24,10 +30,14 @@ function PageIndicator() {
           <option value='circle-line'>Circle-Line</option>
         </select>
       </div>
-      <div className='grid h-full place-content-center gap-6'>
-        {indicatorType === 'square' && <SquareIndicator />}
-        {indicatorType === 'circle' && <CircleIndicator />}
-        {indicatorType === 'circle-line' && <CircleLineIndicator />}
+      <div className='grid h-full place-content-center'>
+        {transition((style, item) => (
+          <a.div style={style} className='flex h-full flex-col gap-6'>
+            {item === 'square' && <SquareIndicator />}
+            {item === 'circle' && <CircleIndicator />}
+            {item === 'circle-line' && <CircleLineIndicator />}
+          </a.div>
+        ))}
       </div>
     </div>
   )
