@@ -57,7 +57,7 @@ function CardGesture() {
   return (
     <div
       style={{ perspective: 600 }}
-      className='mx-auto grid w-app-content flex-1 place-content-center'
+      className='mx-auto grid h-full w-app-content place-content-center'
     >
       <animated.div
         {...bind()}

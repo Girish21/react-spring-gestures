@@ -40,7 +40,7 @@ function Gesture() {
 
 function SimpleGesturePage() {
   return (
-    <div className='relative mx-auto w-app-content flex-1'>
+    <div className='relative mx-auto h-full w-app-content'>
       <Gesture />
     </div>
   )

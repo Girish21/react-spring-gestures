@@ -51,7 +51,7 @@ const DraggableCarousel = () => {
   )
 
   return (
-    <div ref={ref} className='flex-1 overflow-hidden'>
+    <div ref={ref} className='h-full overflow-hidden'>
       <div className='relative flex h-full items-center justify-center'>
         {springs.map(({ display, scale, x }, i) => (
           <animated.div

@@ -29,7 +29,7 @@ const Slider = () => {
   })
 
   return (
-    <div className='mx-auto w-app-content flex-1'>
+    <div className='mx-auto h-full w-app-content'>
       <div className='grid h-full place-content-center'>
         <animated.div
           {...bind()}

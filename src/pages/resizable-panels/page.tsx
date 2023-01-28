@@ -70,7 +70,7 @@ const Panel = ({
 
 const ResizablePanel = () => {
   return (
-    <div className='mx-auto w-app-content flex-1'>
+    <div className='mx-auto h-full w-app-content'>
       <Panel initialSize={250} minSize={100} maxSize={300}>
         <div className='h-full bg-blue-500' />
         <Panel initialSize={300} minSize={100} maxSize={400}>
