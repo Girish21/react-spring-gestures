@@ -1,6 +1,6 @@
 import { a, useTransition } from '@react-spring/web'
 import * as React from 'react'
-import { useLocation, useOutlet } from 'react-router-dom'
+import { Outlet, useLocation, useOutlet } from 'react-router-dom'
 import { NavContainer, NavPlaceholderChild } from './nav-container'
 import Nav from './nav.lazy'
 
@@ -12,6 +12,7 @@ const Child = () => {
     enter: { opacity: 1, y: 0 },
     leave: { opacity: 0, y: 32 },
     exitBeforeEnter: true,
+    initial: null,
   })
 
   return (

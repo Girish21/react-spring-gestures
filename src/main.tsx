@@ -4,13 +4,14 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Layout } from './components'
 import './index.css'
 import CardGesture from './pages/card-gesture'
-import PageIndicator from './pages/PageIndicator'
+import PageIndicator from './pages/page-indicator'
 import DraggableCarousel from './pages/draggable-carousel'
 import IndexPage from './pages/index'
 import NativeSlider from './pages/native-slider'
 import ResizablePanels from './pages/resizable-panels'
 import ScrollEffect from './pages/scroll-effect'
 import SimpleDrag from './pages/simple-gesture'
+import CardCarousel from './pages/card-carousel'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -78,6 +79,14 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             element={
               <React.Suspense fallback={null}>
                 <PageIndicator />
+              </React.Suspense>
+            }
+          />
+          <Route
+            path='card-carousel'
+            element={
+              <React.Suspense fallback={null}>
+                <CardCarousel />
               </React.Suspense>
             }
           />

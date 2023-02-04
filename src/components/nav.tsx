@@ -21,13 +21,14 @@ const CloseSvg = generateSvg(svg, 'close')
 
 const NavLinks = [
   { path: '/', label: 'Home' },
-  { path: 'simple-drag', label: 'Simple Drag' },
   { path: 'indicators', label: 'Indicators' },
+  { path: 'card-carousel', label: 'Card Carousel' },
   { path: 'draggable-carousel', label: 'Draggable Carousel' },
-  { path: 'resizable-panels', label: 'Resizable Panels' },
   { path: 'native-slider', label: 'Native Slider' },
   { path: 'scroll-effect', label: 'Scroll Effect' },
+  { path: 'simple-drag', label: 'Simple Drag' },
   { path: 'card-gesture', label: 'Card Gesture' },
+  { path: 'resizable-panels', label: 'Resizable Panels' },
 ] as const
 
 function NavLink(props: Omit<NavLinkProps, 'className'>) {
