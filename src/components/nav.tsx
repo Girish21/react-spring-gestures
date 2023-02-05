@@ -23,6 +23,7 @@ const NavLinks = [
   { path: '/', label: 'Home' },
   { path: 'indicators', label: 'Indicators' },
   { path: 'card-carousel', label: 'Card Carousel' },
+  { path: 'scroll-carousel', label: 'Scroll Carousel' },
   { path: 'draggable-carousel', label: 'Draggable Carousel' },
   { path: 'native-slider', label: 'Native Slider' },
   { path: 'scroll-effect', label: 'Scroll Effect' },

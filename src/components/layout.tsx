@@ -7,7 +7,7 @@ import Nav from './nav.lazy'
 const Child = () => {
   const location = useLocation()
 
-  const transition = useTransition(location, {
+  const transition = useTransition(location.key, {
     from: { opacity: 0, y: -32 },
     enter: { opacity: 1, y: 0 },
     leave: { opacity: 0, y: 32 },

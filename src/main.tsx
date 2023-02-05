@@ -12,6 +12,7 @@ import ResizablePanels from './pages/resizable-panels'
 import ScrollEffect from './pages/scroll-effect'
 import SimpleDrag from './pages/simple-gesture'
 import CardCarousel from './pages/card-carousel'
+import ScrollCarousel from './pages/scroll-carousel'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -87,6 +88,14 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             element={
               <React.Suspense fallback={null}>
                 <CardCarousel />
+              </React.Suspense>
+            }
+          />
+          <Route
+            path='scroll-carousel'
+            element={
+              <React.Suspense fallback={null}>
+                <ScrollCarousel />
               </React.Suspense>
             }
           />
