@@ -14,6 +14,7 @@ import SimpleDrag from './pages/simple-gesture'
 import CardCarousel from './pages/card-carousel'
 import ScrollCarousel from './pages/scroll-carousel'
 import Numpad from './pages/numpad'
+import SimpleDragIndicator from './pages/simple-drag-indicator'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -105,6 +106,14 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             element={
               <React.Suspense fallback={null}>
                 <Numpad />
+              </React.Suspense>
+            }
+          />
+          <Route
+            path='simple-drag-indicator'
+            element={
+              <React.Suspense fallback={null}>
+                <SimpleDragIndicator />
               </React.Suspense>
             }
           />

@@ -2,10 +2,9 @@ import * as React from 'react'
 import { useSpring, a, useTransition } from '@react-spring/web'
 
 import { usePrevious } from '../../hooks'
+import { getItemId, useItemRefs } from '../../hooks/use-items-ref'
 
 const MAX = 10
-
-const getItemId = (index: number) => `item-${index}`
 
 function PageIndicator() {
   const [indicatorType, setIndicatorType] = React.useState<Indicators>('square')
@@ -195,28 +194,6 @@ const Buttons = ({ getItemProps, setCurrent, current }: ButtonsProps) => {
 
 const ButtonsContainer = ({ children }: { children: React.ReactNode }) => {
   return <div className='relative flex items-center gap-6'>{children}</div>
-}
-
-const useItemRefs = () => {
-  const itemsRefs = React.useRef<Map<string, HTMLElement | null>>(new Map())
-
-  const getItemProps = React.useCallback(
-    ({
-      index,
-      ...props
-    }: React.HTMLAttributes<HTMLElement> & { index: number }) => {
-      return {
-        ref: (el: HTMLElement | null) => {
-          itemsRefs.current.set(getItemId(index), el)
-        },
-        id: getItemId(index),
-        ...props,
-      }
-    },
-    [],
-  )
-
-  return { itemsRefs, getItemProps }
 }
 
 const useSlectionState = () => {

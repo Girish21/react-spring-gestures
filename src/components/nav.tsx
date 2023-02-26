@@ -31,6 +31,7 @@ const NavLinks = [
   { path: 'card-gesture', label: 'Card Gesture' },
   { path: 'resizable-panels', label: 'Resizable Panels' },
   { path: 'numpad', label: 'Numpad' },
+  { path: 'simple-drag-indicator', label: 'Simple Drag Indicator' },
 ] as const
 
 function NavLink(props: Omit<NavLinkProps, 'className'>) {
@@ -92,7 +93,7 @@ function MobileNav() {
           visible ? (
             <RemoveScroll>
               <animated.div style={style} className='fixed inset-0 z-10'>
-                <div className='h-full w-full bg-white px-8 pt-24 pb-8'>
+                <div className='h-full w-full overflow-auto bg-white px-8 pt-24 pb-8'>
                   <ul className='flex flex-col gap-y-8 md:items-center'>
                     {itemsTransition((style, item) =>
                       item ? (
