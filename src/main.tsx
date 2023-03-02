@@ -15,6 +15,7 @@ import CardCarousel from './pages/card-carousel'
 import ScrollCarousel from './pages/scroll-carousel'
 import Numpad from './pages/numpad'
 import SimpleDragIndicator from './pages/simple-drag-indicator'
+import CardFlip from './pages/card-flip'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -114,6 +115,14 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             element={
               <React.Suspense fallback={null}>
                 <SimpleDragIndicator />
+              </React.Suspense>
+            }
+          />
+          <Route
+            path='card-flip'
+            element={
+              <React.Suspense fallback={null}>
+                <CardFlip />
               </React.Suspense>
             }
           />

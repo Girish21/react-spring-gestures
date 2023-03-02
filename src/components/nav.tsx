@@ -32,6 +32,7 @@ const NavLinks = [
   { path: 'resizable-panels', label: 'Resizable Panels' },
   { path: 'numpad', label: 'Numpad' },
   { path: 'simple-drag-indicator', label: 'Simple Drag Indicator' },
+  { path: 'card-flip', label: 'Card Flip' },
 ] as const
 
 function NavLink(props: Omit<NavLinkProps, 'className'>) {
