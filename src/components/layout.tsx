@@ -3,6 +3,7 @@ import * as React from 'react'
 import { Outlet, useLocation, useOutlet } from 'react-router-dom'
 import { NavContainer, NavPlaceholderChild } from './nav-container'
 import Nav from './nav.lazy'
+import { NavLinks } from './nav'
 
 const Child = () => {
   const location = useLocation()
@@ -22,8 +23,22 @@ const Child = () => {
           <AnimatedOutlet />
         </a.div>
       ))}
+      <PageTitle />
     </>
   )
+}
+
+const PageTitle = () => {
+  const location = useLocation()
+
+  React.useEffect(() => {
+    const firstSegment = location.pathname.split('/').filter(Boolean)[0]
+    const activeLink = NavLinks.find(link => link.path === firstSegment)
+
+    document.title = activeLink?.label ?? 'Home'
+  }, [location])
+
+  return null
 }
 
 const AnimatedOutlet = () => {
