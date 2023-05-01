@@ -19,8 +19,9 @@ import { NavContainer } from './nav-container'
 const HamburgerSvg = generateSvg(svg, 'hamburger')
 const CloseSvg = generateSvg(svg, 'close')
 
-const NavLinks = [
+export const NavLinks = [
   { path: '/', label: 'Home' },
+  { path: 'wheel-input', label: 'Wheel Input' },
   { path: 'indicators', label: 'Indicators' },
   { path: 'card-carousel', label: 'Card Carousel' },
   { path: 'scroll-carousel', label: 'Scroll Carousel' },

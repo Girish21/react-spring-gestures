@@ -16,6 +16,7 @@ import ScrollCarousel from './pages/scroll-carousel'
 import Numpad from './pages/numpad'
 import SimpleDragIndicator from './pages/simple-drag-indicator'
 import CardFlip from './pages/card-flip'
+import WheelInput from './pages/wheel-input'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -123,6 +124,14 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             element={
               <React.Suspense fallback={null}>
                 <CardFlip />
+              </React.Suspense>
+            }
+          />
+          <Route
+            path='wheel-input'
+            element={
+              <React.Suspense fallback={null}>
+                <WheelInput />
               </React.Suspense>
             }
           />
